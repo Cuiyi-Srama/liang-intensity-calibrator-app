@@ -191,6 +191,16 @@
       load() {
         return new Promise((resolve, reject) => {
           const handleReady = () => {
+            // 移动端初始化：muted 自动播放后立即暂停，使后续 currentTime seek 生效
+            // （桌面 Chrome 宽容，移动端 Chrome/WebView 对从未 play 过的媒体 seek 会静默忽略）
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.then === "function") {
+              playPromise
+                .then(() => { video.pause(); })
+                .catch(() => { /* 自动播放被拒时忽略，seek 逻辑照旧 */ });
+            } else {
+              video.pause();
+            }
             drawNow();
             startFrameLoop();
             resolve();
