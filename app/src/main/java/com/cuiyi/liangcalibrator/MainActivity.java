@@ -1,5 +1,6 @@
 package com.cuiyi.liangcalibrator;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -9,10 +10,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.webkit.WebViewAssetLoader;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private static final String ASSET_URL = "https://appassets.androidplatform.net/assets/index.html";
 
