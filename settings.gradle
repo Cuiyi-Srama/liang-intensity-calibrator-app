@@ -1,0 +1,2 @@
+rootProject.name = 'liang-intensity-calibrator-app'
+include ':app'
